@@ -62,10 +62,10 @@ namespace BrunoDPO.WCF.Cliente
 
         private async void btnConectarCliente_Click(object sender, EventArgs e)
         {
-            btnConectarCliente.Visible = false;
-            btnDesconectarCliente.Visible = true;
             btnConectarCliente.Enabled = false;
+            btnConectarCliente.Visible = false;
             btnDesconectarCliente.Enabled = false;
+            btnDesconectarCliente.Visible = true;
 
             var resposta = Task.Run(() =>
             {
@@ -89,10 +89,10 @@ namespace BrunoDPO.WCF.Cliente
 
         private async void btnDesconectarCliente_Click(object sender, EventArgs e)
         {
-            btnConectarCliente.Visible = true;
-            btnDesconectarCliente.Visible = false;
             btnConectarCliente.Enabled = false;
+            btnConectarCliente.Visible = true;
             btnDesconectarCliente.Enabled = false;
+            btnDesconectarCliente.Visible = false;
 
             var resposta = Task.Run(() =>
             {
@@ -122,10 +122,14 @@ namespace BrunoDPO.WCF.Cliente
             _hostCliente.Open();
         }
 
-        private void Desconectar()
+        private async void Desconectar()
         {
             txtMensagemRecebimento.AppendText($"Desconexão solicitada pelo servidor{Environment.NewLine}");
-            Task.Run(() =>
+
+            btnDesconectarCliente.Enabled = false;
+            btnConectarCliente.Enabled = false;
+
+            var resposta = Task.Run(() =>
             {
                 if (_hostCliente != null)
                 {
@@ -139,12 +143,15 @@ namespace BrunoDPO.WCF.Cliente
                     }
                     _hostCliente = null;
                 }
-            }).GetAwaiter().OnCompleted(() =>
-            {
-                btnConectarCliente.Enabled = true;
-                txtSistema.ReadOnly = false;
-                txtFilaRecebimento.ReadOnly = false;
             });
+            await resposta;
+
+            btnConectarCliente.Enabled = true;
+            btnConectarCliente.Visible = true;
+            btnDesconectarCliente.Visible = false;
+            txtSistema.ReadOnly = false;
+            txtFilaRecebimento.ReadOnly = false;
+
         }
 
         private void Escrever(string mensagem) =>
