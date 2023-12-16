@@ -62,6 +62,11 @@ namespace BrunoDPO.WCF.Cliente
 
         private async void btnConectarCliente_Click(object sender, EventArgs e)
         {
+            btnConectarCliente.Visible = false;
+            btnDesconectarCliente.Visible = true;
+            btnConectarCliente.Enabled = false;
+            btnDesconectarCliente.Enabled = false;
+
             var resposta = Task.Run(() =>
             {
                 var canalServidor = _factoryServidor.CreateChannel();
@@ -78,6 +83,31 @@ namespace BrunoDPO.WCF.Cliente
             txtMensagemRecebimento.AppendText($"Ouvindo em {endereco}{Environment.NewLine}");
 
             IniciarCliente(endereco);
+
+            btnDesconectarCliente.Enabled = true;
+        }
+
+        private async void btnDesconectarCliente_Click(object sender, EventArgs e)
+        {
+            btnConectarCliente.Visible = true;
+            btnDesconectarCliente.Visible = false;
+            btnConectarCliente.Enabled = false;
+            btnDesconectarCliente.Enabled = false;
+
+            var resposta = Task.Run(() =>
+            {
+                var canalServidor = _factoryServidor.CreateChannel();
+                var requisicao = new RequisicaoCliente()
+                {
+                    Origem = txtSistema.Text,
+                    Fila = txtFilaRecebimento.Text
+                };
+                canalServidor.DesconectarCliente(requisicao);
+            });
+            await resposta;
+            txtMensagemRecebimento.AppendText($"Cliente desconectado");
+
+            btnConectarCliente.Enabled = true;
         }
 
         private void IniciarCliente(string endereco)

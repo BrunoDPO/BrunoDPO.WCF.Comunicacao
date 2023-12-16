@@ -50,6 +50,7 @@
             this.txtSistema = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblSistema = new System.Windows.Forms.Label();
+            this.btnDesconectarCliente = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             this.gbxEnvioMensagens.SuspendLayout();
             this.gbxRecebimentoMensagens.SuspendLayout();
@@ -198,6 +199,7 @@
             this.gbxRecebimentoMensagens.Controls.Add(this.txtSistema);
             this.gbxRecebimentoMensagens.Controls.Add(this.label1);
             this.gbxRecebimentoMensagens.Controls.Add(this.lblSistema);
+            this.gbxRecebimentoMensagens.Controls.Add(this.btnDesconectarCliente);
             this.gbxRecebimentoMensagens.Location = new System.Drawing.Point(12, 228);
             this.gbxRecebimentoMensagens.Name = "gbxRecebimentoMensagens";
             this.gbxRecebimentoMensagens.Size = new System.Drawing.Size(450, 166);
@@ -217,9 +219,9 @@
             // 
             // btnConectarCliente
             // 
-            this.btnConectarCliente.Location = new System.Drawing.Point(367, 17);
+            this.btnConectarCliente.Location = new System.Drawing.Point(360, 17);
             this.btnConectarCliente.Name = "btnConectarCliente";
-            this.btnConectarCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnConectarCliente.Size = new System.Drawing.Size(82, 23);
             this.btnConectarCliente.TabIndex = 14;
             this.btnConectarCliente.Text = "Conectar";
             this.btnConectarCliente.UseVisualStyleBackColor = true;
@@ -267,6 +269,16 @@
             this.lblSistema.Size = new System.Drawing.Size(44, 13);
             this.lblSistema.TabIndex = 6;
             this.lblSistema.Text = "Sistema";
+            // 
+            // btnDesconectarCliente
+            // 
+            this.btnDesconectarCliente.Location = new System.Drawing.Point(360, 17);
+            this.btnDesconectarCliente.Name = "btnDesconectarCliente";
+            this.btnDesconectarCliente.Size = new System.Drawing.Size(82, 23);
+            this.btnDesconectarCliente.TabIndex = 15;
+            this.btnDesconectarCliente.Text = "Desconectar";
+            this.btnDesconectarCliente.UseVisualStyleBackColor = true;
+            this.btnDesconectarCliente.Click += new System.EventHandler(this.btnDesconectarCliente_Click);
             // 
             // FormPrincipal
             // 
@@ -316,6 +328,7 @@
         private System.Windows.Forms.Label lblMensagemRecebimento;
         private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.Button btnPing;
+        private System.Windows.Forms.Button btnDesconectarCliente;
     }
 }
 
