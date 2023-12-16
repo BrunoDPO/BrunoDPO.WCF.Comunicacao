@@ -29,6 +29,6 @@ Por sua vez, o servidor mantém em memória todos os clientes conectados para qu
 
 ## Mecanismos
 
-O WCF possibilita que toda a parametrização relativa à conexão (seja ela o protocolo, a segurança, os endpoints existentes, etc) possa se realizado através de entradas no arquivo de configuração.
-Isso flexibiliza a forma de utilização sem que seja necessária muita alteração de código. Porém, como nesse cenário as conexões somente serão estabelecidas de uma única forma, foi escolhido utilizar tudo em código.
+O WCF possibilita que toda a parametrização relativa à conexão (seja ela o protocolo, a segurança, os endpoints existentes, etc) seja realizada através de entradas no arquivo de configuração.
+Isso flexibiliza a forma de utilização sem que seja necessária alteração de código. Porém, como nesse cenário as conexões somente serão estabelecidas de uma única forma, foi escolhido utilizar tudo em código.
 Além disso, o fato de haver conexão em duas vias, apesar de parecer mais complexo num primeiro momento, ajuda a demonstrar como mensagens podem fluir entre os processos, mesmo que estejam em máquinas diferentes.
