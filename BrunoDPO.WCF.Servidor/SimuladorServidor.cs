@@ -6,7 +6,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Timer = System.Timers.Timer;
@@ -191,7 +190,7 @@ namespace BrunoDPO.WCF.Servidor
             });
         }
 
-        public void FinnalizarServidor()
+        public void FinalizarServidor()
         {
             _pingador.Stop();
             DesconectarClientes();

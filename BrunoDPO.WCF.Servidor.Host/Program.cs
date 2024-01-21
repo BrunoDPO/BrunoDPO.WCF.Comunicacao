@@ -34,7 +34,7 @@ namespace BrunoDPO.WCF.Servidor.Host
                 Console.WriteLine("Pressione qualquer tecla para finalizar.");
                 Console.ReadKey();
                 Console.WriteLine("Servidor está finalizando...");
-                simuladorServidor.FinnalizarServidor();
+                simuladorServidor.FinalizarServidor();
                 selfHost.Close();
             }
             catch (CommunicationException ce)
